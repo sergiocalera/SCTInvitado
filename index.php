@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>PHP Starter Application</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" href="style.css" />
-</head>
-<body>
-	<table>
-		<tr>
-			<td style='width: 30%;'><img class = 'newappIcon' src='images/newapp-icon.png'>
-			</td>
-			<td>
-				<h1 id = "message"><?php echo "Hello world!"; ?>
-</h1>
-				<p class='description'></p> Thanks for creating a <span class="blue">PHP Starter Application</span>. Get started by reading our <a
-				href="https://www.ng.bluemix.net/docs/#starters/php/index.html#php">documentation</a>
-				or use the Start Coding guide under your app in your dashboard.
-			</td>
-		</tr>
-	</table>
-</body>
-</html>
+<?php
+
+ini_set('display_errors', 1);
+
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', realpath(dirname(__FILE__)).DS);
+define('APP_PATH', ROOT.'application'.DS);
+
+require_once APP_PATH.'Config.php';
+require_once APP_PATH.'Bootstrap.php';
+require_once APP_PATH.'Controller.php';
+require_once APP_PATH.'Model.php';
+require_once APP_PATH.'Request.php';
+require_once APP_PATH.'View.php';
+require_once APP_PATH.'Database.php';
+require_once APP_PATH.'Session.php';
+
+Session::init();
+
+try{
+    Bootstrap::run(new Request());
+}
+catch (Exception $e){
+    echo $e->getMessage();
+}

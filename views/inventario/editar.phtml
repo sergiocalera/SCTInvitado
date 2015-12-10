@@ -1,0 +1,115 @@
+<br />
+<form class="form-horizontal" id="formEditar">
+    <input type="hidden" name="id" value="<?php echo $respuesta['id']?>"/>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="tipo">Tipo</label>
+                <select class="form-control" id="tipoEditar" name="tipo">
+                    <?php if( isset($respuesta)):?>
+                    <option value="0">-- Selecciona una Opción</option>
+                    <?php foreach ($respuesta['tipo'] as $aux1):?>
+                    <option value="<?php echo $aux1['id'];?>"><?php echo $aux1['genero'];?></option>
+                    <?php endforeach;?>
+                    <?php else:?>
+                    <option>-- Lista Vacia --</option>
+                    <?php endif;?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="modelo">Numero del Modelo</label>
+                <select class="form-control" id="modeloEditar" name="modelo"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="serie">Numero de Serie</label>
+                <input type="text" class="form-control" name="serie" placeholder="Numero de serie otorgada"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="estado">Estado</label>
+                <select class="form-control" id="estadoEditar" name="estado">
+                    <?php if( isset($respuesta) ):?>
+                    <option value="0">-- Seleccione una Opción --</option>
+                    <?php foreach ($respuesta['estado'] as $aux1):?>
+                    <option value="<?php echo $aux1['id'];?>"><?php echo $aux1['descripcion'];?></option>
+                    <?php endforeach;?>
+                    <?php else:?>
+                    <option>-- Lista Vacia --</option>
+                    <?php endif;?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="unidad">Unidad</label>
+                <select class="form-control" id="unidad" name="unidad">
+                    <?php if( isset($respuesta)):?>
+                    <option value="0">-- Seleccione una Opción</option>
+                    <?php foreach ($respuesta['unidad'] as $aux1):?>
+                    <option value="<?php echo $aux1['id']?>"><?php echo $aux1['nombre']?></option>
+                    <?php endforeach;?>
+                    <?php else:?>
+                    <option>-- Lista Vacia --</option>
+                    <?php endif;?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <p>
+        <button type="button" class="btn btn-success" id="editarRecurso">Guardar</button>
+        <button type="button" class="btn btn-danger" id="cancelarEditar">Cancelar</button>
+    </p>
+</form>
+
+<script type="text/javascript">
+    var local = this.location.origin + this.location.pathname;
+    
+    $('#cancelarEditar').click(function(){
+        $('#formEditar').hide();
+    });
+    
+    $('#editarRecurso').click(function(){
+        var data = $('#formEditar').serializeArray();
+        $.ajax({
+            async: false,
+            url: local + '/salvarEditar',
+            type: 'post',
+            dataType: 'json',
+            data : data,
+            success: function(msg){
+                
+            }
+        });
+        $('#formEditar').hide();
+    });
+    
+    $('#tipoEditar').change(function(){
+        $.ajax({
+            async: false,
+            url: local + '/nuevo/modelo/' + $('#tipoEditar').val(),
+            type: 'get',
+            dataType: 'json',
+            success: function(msg){
+                $('#modeloEditar').html('');
+                for(aux1 in msg){
+                    for(aux2 in msg[aux1]){
+                        $('#modeloEditar').append("<option value='" + msg[aux1][aux2]['id'] + "'>" + msg[aux1][aux2]['numero'] + "</option>");
+                    }
+                }
+            }
+        });
+    });
+</script>

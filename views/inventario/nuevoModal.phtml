@@ -1,0 +1,103 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal <?php echo strtoupper($respuesta)?>" id="nuevoModal">
+                <div class="form-group has-success has-feedback">
+                    <div class="col-sm-12">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">NUEVO <?php echo strtoupper($respuesta)?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <?php switch ($respuesta):?><?php case'tipo':?>
+                            <div class="input-group">
+                                <label class="input-group-addon">Tipo</label>
+                                <input type="text" class="form-control" name="genero" placeholder="Nuevo genero"/>
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <label class="input-group-addon">Descripción</label>
+                                <textarea rows="3" class="form-control" name="descripcion" placeholder="Inserta una descripción del nuevo genero" ></textarea>
+                            </div>
+                            <?php break?>
+                            <?php case'modelo':?>
+                            <div class="input-group">
+                                <label class="input-group-addon">Número</label>
+                                <input type="text" class="form-control" name="numero" placeholder="Numero de modelo o serie"/>
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <label class="input-group-addon">Descripción</label>
+                                <textarea rows="3" class="form-control" name="descripcion" placeholder="Inserta una descripcion del nuevo modelo"></textarea>
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <label class="input-group-addon">Marca</label>
+                                <select class="form-control nuevoModal" id="marcaNuevoModal" name="marca"></select>
+                            </div>
+                            <br/>
+                            <div class="input-group">
+                                <label class="input-group-addon">Tipo</label>
+                                <select class="form-control nuevoModal" id="tipoNuevoModal" name="tipo"></select>
+                            </div>
+                            <?php break?>
+                            <?php case'estado':?>
+                            <div class="input-group">
+                                <label class="input-group-addon">Descripcion</label>
+                                <input type="text" class="form-control" name='descripcion' placeholder="Inserta el nuevo estado"/>
+                            </div>
+                            <?php break?>
+                            <?php case'marca':?>
+                            <div class="input-group">
+                                <label class="input-group-addon">Empresa:</label>
+                                <input type="text" class="form-control" name="empresa" placeholder="Nombre completo de la empresa"/>
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <label class="input-group-addon">Descripcion</label>
+                                <textarea rows="3" class="form-control" name="descripcion" placeholder="Inserta una descripción de la nueva empresa"></textarea>
+                            </div>
+                            <?php break?>
+                            <?php case'unidad':?>
+                            <div class="input-group">
+                                <label class="input-group-addon">Nombre del Equipo:</label>
+                                <input type='text' class="form-control" name="nombre_equipo" placeholder="Nombre del equipo nuevo"/>
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <label class="input-group-addon">Nombre del Usuario</label>
+                                <input type='text' class="form-control" name="nombre_usuario" placeholder="Nombre del usuario responsable"/>
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <label class="input-group-addon">IP</label>
+                                <input type="text" class="form-control" name="ip" placeholder="IP asignado a la maquina"/>
+                            </div>
+                            <br />
+                            <div class="input-group">
+                                <label class="input-group-addon">Ubicación</label>
+                                <select class="form-control nuevoModal" id="ubicacionNuevoModal" name="ubicacion"></select>
+                            </div>
+                            <?php break?>
+                            <?php case'ubicacion':?>
+                            <div class="input-group">
+                                <label class="input-group-addon">Dirección</label>
+                                <textarea rows="3" class="form-control" name="direccion" placeholder="Ingresar la nueva dirección de la unidad"></textarea>
+                            </div>
+                            <?php break?>
+                            <?php endswitch;?>                            
+                            <br>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn btn-default" data-dismiss="modal">Close</div>
+                            <button type="button" class="btn btn-primary" id="salvar">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="<?php echo $js['nuevoModal'] ?>"></script>
+<script type='text/javascript' src="<?php echo $js['envio']?>"></script>

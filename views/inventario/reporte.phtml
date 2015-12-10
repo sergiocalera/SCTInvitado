@@ -1,0 +1,44 @@
+<?php
+$encabezado = array(
+            'serie',
+            'numero_modelo',
+            'descripcion_modelo',
+            'empresa',
+            'descripcion_empresa',
+            'genero',
+            'descripcion_tipo',
+            'estado',
+            'nombre_equipo',
+            'nombre_usuario',
+            'ip',
+            'direccion');
+?>
+<table id="reporte" class="table table-hover table-bordered">
+    <tr>
+        <th>SERIE</th>
+        <th>NUMERO_MODELO</th>
+        <th>DESCRIPCION_MODELO</th>
+        <th>EMPRESA</th>
+        <th>DESCRIPCION_EMPRESA</th>
+        <th>GENERO</th>
+        <th>DESCRIPCION_TIPO</th>
+        <th>ESTADO</th>
+        <th>NOMBRE_EQUIPO</th>
+        <th>NOMBRE_USUARIO</th>
+        <th>IP</th>
+        <th>DIRECCION</th>
+        <th>EDITAR</th>
+    </tr>
+    <?php foreach($respuesta as $aux1):?>
+    <?php foreach($aux1 as $aux2):?>
+    <tr>
+    <?php foreach($encabezado as $aux3):?>
+        <td><?php echo $aux2[$aux3];?></td>
+    <?php endforeach;?>
+        <td><div id="<?php echo $aux2['id'];?>" class="btn bg-primary editarBtn">modificar</div></td>
+    </tr>
+    <?php endforeach;?>
+    <?php endforeach;?>
+</table>
+
+<script src="<?php echo BASE_URL.'views/inventario/js/reporte.js'?>"></script>

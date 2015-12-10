@@ -1,0 +1,57 @@
+<br/>
+<form class="form-horizontal" id="nuevoRecurso">
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="tipo">Tipo:</label>
+                <select class="form-control nuevo" id="tipoNuevo" name="tipo">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="modelo">Numero del Modelo:</label>
+                <select class="form-control nuevo" id="modeloNuevo" name="modelo">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="serie">Serie:</label>
+                <input type="text" class="form-control nuevo" placeholder="Numero de serie otorgada" name="serie" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="estado">Estado:</label>
+                <select class="form-control nuevo" id="estadoNuevo" name="estado">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="unidad">Unidad:</label>
+                <select class="form-control nuevo" id="unidadNuevo" name="unidad">
+                </select>
+            </div>
+        </div>
+    </div>
+            <p>
+                <button type="button" class="btn btn-success" id="salvarRecurso">Guardar</button>
+                <button type="button" class="btn btn-danger" id="cancelarRecurso">Cancelar</button>
+            </p>
+</form>
+
+<div id="insertarModal"></div>
+
+<script type="text/javascript" src="<?php echo $js['nuevo'] ?>"></script>
+<script type="text/javascript" src="<?php echo $js['bootstrap'] ?>"></script>
+

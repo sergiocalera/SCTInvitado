@@ -1,0 +1,10 @@
+<form id="form1" method="post" action="">
+    <input type="hidden" name="guardar" value="1" />
+    <p>Titulo: <br />
+        <input type="texto" name="titulo" value="<?php if(isset($this->datos['name'])){ echo $this->datos['name'];}?>"/>
+    <p>Cuerpo: <br />
+        <textarea name="cuerpo"  ><?php if(isset($this->datos['number'])){ echo $this->datos['number'];}?></textarea>
+        
+        <input type="submit" class="button" value="Guardar" />
+    </p>
+</form>

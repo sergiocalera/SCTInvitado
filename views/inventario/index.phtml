@@ -1,0 +1,45 @@
+<script src="<?php echo BASE_URL.'views/inventario/js/index.js'?>"></script>
+</script>
+<br />
+<form id="formIndexTipo" class="form-horizontal">
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="tipo">Genero:</label>
+                <select id="generoIndex" class="form-control" name="tipo">
+                    <?php if(isset($this->elementos) && count($this->elementos)):?>
+                    <option value="0">-- Selecciona una Opción --</option>
+                    <?php foreach ($this->elementos as $aux1):?>
+                    <?php foreach ($aux1 as $aux2):?>
+                    <option value="<?php echo $aux2['id'];?>"><?php echo $aux2['genero'];?></option>
+                    <?php endforeach;?>
+                    <?php endforeach;?>
+                    <?php else:?>
+                    <option>-- Lista Vacia --</option>
+                    <?php endif;?>
+                </select>
+                <div id="buscarIndexTipo" class="input-group-addon btn bg-success">Buscar</div>
+            </div>
+        </div>
+    </div>
+</form>
+<form id="formIndexNombre" class="form-horizontal">
+    <div class="form-group has-success has-feedback">
+        <div class="col-sm-9">
+            <div class="input-group">
+                <label class="input-group-addon" for="nombreUsuario">Nombre</label>
+                <input type="text" class="form-control" placeholder="Insertar fragmento del nombre" name="nombre"/>
+                <div id="buscarIndexNombre" class="input-group-addon btn bg-success">Buscar</div>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<div id="areaReporte"></div>
+<br />
+<button class="btn bg-primary" type="button" id="nuevoBtn">Nuevo</button>
+
+<div id="nuevoForm"></div>
+<div id="editarForm"></div>
+<div></div>

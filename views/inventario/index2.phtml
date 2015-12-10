@@ -1,0 +1,24 @@
+<h3>Ultimos posts</h3>
+
+<?php if(isset($this->posts) && count($this->posts)):?>
+<table>
+    <?php foreach ($this->posts as $aux):?>
+    <tr>
+        <td><?php echo $aux['name'];?></td>
+        <td><?php echo $aux['number'];?></td>
+        <td><?php echo $aux['price'];?></td>
+        <td><a href="<?php echo BASE_URL.'inventario/editar/'.$aux['price']?>">Editar</a></td>
+        <td><a href="<?php echo BASE_URL.'inventario/eliminar/'.$aux['price']?>">Eliminar</a></td>
+    </tr>
+    <?php endforeach;?>
+</table>
+
+<?php else:?>
+<p><strong>No hay post</strong></p>
+<?php endif;?>
+
+<?php if(Session::accesoViewEstricto(array('usuario'))):?>
+<p><a href="<?php echo BASE_URL.'post/nuevo'?>">Agregar Post</a></p>
+<?php endif;?>
+
+<p><a href="<?php echo BASE_URL.'inventario/nuevo'?>">Agregar Post</a></p>
